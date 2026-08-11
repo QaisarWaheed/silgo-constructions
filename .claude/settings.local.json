@@ -1,0 +1,20 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(npx --yes create-next-app@latest . --typescript --tailwind --eslint --app --no-src-dir --import-alias \"@/*\" --use-npm)",
+      "Read(//c/Users/qaise/Desktop/Projects/**)",
+      "Bash(npx --yes create-next-app@latest silgo-constructions --typescript --tailwind --eslint --app --no-src-dir --import-alias \"@/*\" --use-npm)",
+      "Bash(npm run *)",
+      "Bash(taskkill //F //IM node.exe)",
+      "Bash(find /c/Users/qaise/Desktop -maxdepth 1 -iname \"*.png\" -o -iname \"*.jpg\" -maxdepth 1 2>/dev/null | head -20; find /c/Users/qaise/Downloads -maxdepth 1 \\\\\\( -iname \"*.png\" -o -iname \"*.jpg\" \\\\\\) -newer /c/Users/qaise/Desktop 2>/dev/null | head -20)",
+      "Read(//c/Users/qaise/Desktop/**)",
+      "Read(//c/Users/qaise/Downloads/**)",
+      "Bash(xargs -I{} ls -la {})",
+      "Bash(mkdir -p \"/c/Users/qaise/Desktop/Projects/silgo constructions/public/brand\" && cp \"/c/Users/qaise/Desktop/Silgo logo with Bankground.jpg.jpeg\" \"/c/Users/qaise/Desktop/Projects/silgo constructions/public/brand/silgo-logo.jpg\" && ls -la \"/c/Users/qaise/Desktop/Projects/silgo constructions/public/brand/\")",
+      "Bash(npm install *)"
+    ],
+    "additionalDirectories": [
+      "C:\\Users\\qaise\\Desktop"
+    ]
+  }
+}
