@@ -6,6 +6,8 @@ import Button from "@/components/ui/Button";
 import Section from "@/components/ui/Section";
 import InfoRow from "@/components/ui/InfoRow";
 import Reveal from "@/components/ui/Reveal";
+import ParticleMesh from "@/components/ui/ParticleMesh";
+import PlankHouseBuilder from "@/components/sections/home/PlankHouseBuilder";
 import { home } from "@/lib/content";
 
 export default function HomeSections() {
@@ -13,17 +15,56 @@ export default function HomeSections() {
     <>
       {/* Hero */}
       <section
-        className="relative w-full overflow-hidden border-b border-gold/15 px-8 pb-[90px] pt-[110px]"
+        className="relative flex w-full min-h-[680px] items-center overflow-hidden border-b border-gold/15 px-8 py-[110px]"
         style={{
           background:
             "radial-gradient(ellipse at 75% 20%, rgba(201,162,76,0.14), transparent 60%), #0b0b0c",
         }}
       >
-        <div className="mx-auto grid max-w-[1280px] items-center gap-12 md:grid-cols-[1.1fr_0.9fr]">
+        {/* interactive particle mesh */}
+        <ParticleMesh
+          className="pointer-events-none absolute inset-0 z-0 opacity-60"
+          style={{
+            maskImage: "linear-gradient(100deg, transparent, transparent 26%, black 52%)",
+            WebkitMaskImage: "linear-gradient(100deg, transparent, transparent 26%, black 52%)",
+          }}
+        />
+
+        {/* ambient glow */}
+        <motion.div
+          aria-hidden
+          className="pointer-events-none absolute right-[18%] top-1/2 z-0 h-[560px] w-[560px] -translate-y-1/2 rounded-full bg-gold/10 blur-[120px]"
+          animate={{ opacity: [0.5, 0.85, 0.5], scale: [1, 1.08, 1] }}
+          transition={{ duration: 8, repeat: Infinity, ease: "easeInOut" }}
+        />
+
+        {/* logo watermark */}
+        <motion.div
+          aria-hidden
+          className="pointer-events-none absolute inset-y-0 right-[14%] z-[1] hidden items-center opacity-0 md:right-[18%] md:flex lg:right-[22%]"
+          animate={{ opacity: 0.14, y: [0, -14, 0], rotate: [0, 1, 0] }}
+          transition={{
+            opacity: { duration: 1.2, ease: "easeOut" },
+            y: { duration: 10, repeat: Infinity, ease: "easeInOut" },
+            rotate: { duration: 10, repeat: Infinity, ease: "easeInOut" },
+          }}
+        >
+          <Image
+            src="/brand/silgo-logo-watermark.png"
+            alt=""
+            width={703}
+            height={1043}
+            className="h-[58%] max-h-[420px] w-auto select-none object-contain"
+            priority
+          />
+        </motion.div>
+
+        <div className="relative z-10 mx-auto w-full max-w-[1280px]">
           <motion.div
             initial={{ opacity: 0, y: 24 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.7, ease: "easeOut" }}
+            className="max-w-[640px]"
           >
             <span className="text-xs font-bold tracking-[2px] text-gold">{home.hero.eyebrow}</span>
             <h1 className="mt-[18px] font-display text-[clamp(40px,5.5vw,68px)] font-semibold leading-[1.08]">
@@ -40,20 +81,6 @@ export default function HomeSections() {
                 {home.hero.ctaSecondary.label}
               </Button>
             </div>
-          </motion.div>
-          <motion.div
-            initial={{ opacity: 0, scale: 0.95 }}
-            animate={{ opacity: 1, scale: 1 }}
-            transition={{ duration: 0.8, ease: "easeOut", delay: 0.15 }}
-            className="flex justify-center"
-          >
-            <Image
-              src="/brand/silgo-logo.jpg"
-              alt="Silgo Constructions"
-              width={340}
-              height={340}
-              className="w-full max-w-[340px] rounded-xl shadow-[0_30px_80px_rgba(0,0,0,0.6)] transition-transform duration-500 hover:scale-[1.02]"
-            />
           </motion.div>
         </div>
       </section>
@@ -118,6 +145,19 @@ export default function HomeSections() {
           </div>
           <p className="mt-8 text-base text-muted">{home.oneOpportunity.note}</p>
         </div>
+      </Section>
+
+      {/* Plank House Builder */}
+      <Section maxWidth="max-w-[700px]">
+        <div className="text-center">
+          <h2 className="mb-3 font-display text-[clamp(26px,3.4vw,36px)] font-semibold">
+            Every Strong Plan Starts With <span className="text-gold">a Solid Foundation.</span>
+          </h2>
+          <p className="mb-10 text-base text-muted-dim">
+            Just like a home, a financial strategy is built one deliberate piece at a time.
+          </p>
+        </div>
+        <PlankHouseBuilder />
       </Section>
 
       {/* Who We Are */}
